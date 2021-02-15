@@ -17,7 +17,7 @@ spec:
           image: busybox:latest
           imagePullPolicy: IfNotPresent
           args:
-            - bash
+            - /bin/sh
             - -c
             - "echo Hello World; sleep infinity"
       restartPolicy: Always
