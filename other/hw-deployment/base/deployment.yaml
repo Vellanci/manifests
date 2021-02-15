@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw
+  labels:
+    app: hw
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hw
+      labels:
+        app: hw
+    spec:
+      containers:
+        - name: hw
+          image: busybox:latest
+          imagePullPolicy: IfNotPresent
+          args:
+            - bash
+            - -c
+            - "echo Hello World; sleep infinity"
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: hw

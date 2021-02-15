@@ -1,0 +1,16 @@
+apiVersion: kfdef.apps.kubeflow.org/v1
+kind: KfDef
+metadata:
+  name: kubeflow
+  namespace: kubeflow
+spec:
+  applications:
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: other/hw-deployment
+      name: other-hello-world-deployment
+  repos:
+    - name: manifests
+      uri: https://github.com/Vellanci/manifests/archive/reboot-issue.tar.gz
+  version: master
