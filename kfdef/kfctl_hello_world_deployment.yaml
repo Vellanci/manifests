@@ -6,6 +6,15 @@ metadata:
 spec:
   applications:
     - kustomizeConfig:
+        parameters:
+          - name: param1
+            value: override
+#          - name: param2
+#            value: should-be-default
+          - name: param3
+            value: wasempty
+          - name: param4
+            value: wasntspecified
         repoRef:
           name: manifests
           path: other/hw-deployment

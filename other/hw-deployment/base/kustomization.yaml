@@ -1,4 +1,44 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
   - deployment.yaml
+
+configMapGenerator:
+  - name: hw-parameters
+    envs:
+      - params.env
+generatorOptions:
+  disableNameSuffixHash: true
+
+vars:
+  - name: param1
+    objref:
+      kind: ConfigMap
+      name: hw-parameters
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.param1
+  - name: param2
+    objref:
+      kind: ConfigMap
+      name: hw-parameters
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.param2
+  - name: param3
+    objref:
+      kind: ConfigMap
+      name: hw-parameters
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.param3
+  - name: param4
+    objref:
+      kind: ConfigMap
+      name: hw-parameters
+      apiVersion: v1
+    fieldref:
+      fieldpath: data.param4
+configurations:
+  - params.yaml
